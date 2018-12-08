@@ -34,5 +34,5 @@ class ShoppingCart(object):
         prices = []
         for val in self._items.values():
             prices.extend([val[ITEM].price for i in range(val[COUNT])])
-        return median(prices)
-
+        if prices:
+            return median(prices)
