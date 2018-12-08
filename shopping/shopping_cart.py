@@ -4,6 +4,9 @@ from settings import ITEM, COUNT
 
 
 class ShoppingCart(object):
+    """
+    Class to represent a shopping cart
+    """
     def __init__(self):
         super(ShoppingCart, self).__init__()
         self._items = {}

@@ -8,16 +8,21 @@ def get_median(numbers):
     if count == 0:
         return None
     else:
-        sorted_numbers = sorted(numbers)
+        sort_numbers(numbers)
+        # sorted_numbers = sorted(numbers)
         if count % 2:
-            return sorted_numbers[count//2]
+            return numbers[count//2]
         else:
-            return sum(sorted_numbers[count//2-1:count//2+1]) / 2.0
+            return sum(numbers[count//2-1:count//2+1]) / 2.0
 
 
-# quicksort implementation for sorting list of numbers if
-# pythons sorted() or list.sort() are not used
 def sort_numbers(numbers):
+    """
+    quicksort implementation for sorting list of numbers if
+    pythons sorted() or list.sort() are not used
+    list is sorted in place, no new list is returned
+    :arg numbers: list of ints or floats
+    """
     _quick_sort(numbers, 0, len(numbers) - 1)
 
 
