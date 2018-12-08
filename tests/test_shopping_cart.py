@@ -4,7 +4,7 @@ from shopping.shopping_item import ShoppingItem
 
 
 class ShoppingCartTest(unittest.TestCase):
-    """Unit tests for Shopping cat"""
+    """Unit tests for Shopping cart"""
 
     def setUp(self):
         self.shopping_cart = ShoppingCart()
@@ -43,17 +43,5 @@ class ShoppingCartTest(unittest.TestCase):
         self.shopping_cart.delete_item('orange')
         self.shopping_cart.delete_item('banana')
         self.assertEqual(0.15, self.shopping_cart.get_median_price())
-
-
-def suite():
-    test_suite = unittest.TestSuite()
-    test_suite.addTest(unittest.TestLoader().loadTestsFromTestCase(ShoppingCartTest))
-    return test_suite
-
-
-def run():
-    unittest.TextTestRunner().run(suite())
-
-
-if __name__ == '__main__':
-    run()
+        self.shopping_cart.delete_item('apple')
+        self.assertEqual(None, self.shopping_cart.get_median_price())

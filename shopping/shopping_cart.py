@@ -1,5 +1,5 @@
-from numpy import median
-
+# from numpy import median
+from utilities import get_median
 from settings import ITEM, COUNT
 
 
@@ -34,5 +34,6 @@ class ShoppingCart(object):
         prices = []
         for val in self._items.values():
             prices.extend([val[ITEM].price for i in range(val[COUNT])])
-        if prices:
-            return median(prices)
+        return get_median(prices)
+        # if prices:
+        #     return median(prices)
