@@ -9,7 +9,6 @@ def get_median(numbers):
         return None
     else:
         sort_numbers(numbers)
-        # sorted_numbers = sorted(numbers)
         if count % 2:
             return numbers[count//2]
         else:

@@ -3,7 +3,7 @@ from shopping.utilities import sort_numbers, get_median
 
 
 class UtilitiesTest(unittest.TestCase):
-    """Unit tests for Shopping cat"""
+    """Unit tests for Utilities"""
 
     def setUp(self):
         self.number_list = [5, 7, 9, 5, 3, 2, 4, 5]
