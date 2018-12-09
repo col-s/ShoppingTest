@@ -1,5 +1,6 @@
+import logging
 from utilities import get_median
-from settings import ITEM, COUNT
+from settings import ITEM, COUNT, PRICE, NAME
 
 
 class ShoppingCart(object):
@@ -30,6 +31,8 @@ class ShoppingCart(object):
             return 0
 
     def insert_item(self, item):
+        if not self._validate_item(item):
+            return
         if not self._items.get(item.name, None):
             self._items[item.name] = {ITEM: item, COUNT: 1}
         else:
@@ -61,3 +64,16 @@ class ShoppingCart(object):
 
     def clear_cart(self):
         self._items = {}
+
+    def _validate_item(self, item):
+        if not hasattr(item, NAME):
+            logging.error('Missing shopping item attribute {0}.'.format(NAME))
+            return False
+        if not hasattr(item, PRICE):
+            logging.error('Shopping item {0} has no price.'.format(item.name))
+            return False
+        if not isinstance(item.price, int) and not isinstance(item.price, float):
+            logging.error('Invalid item price for {0}.'.format(item.name))
+            return False
+        return True
+

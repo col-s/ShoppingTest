@@ -23,6 +23,8 @@ class ShoppingCartTest(unittest.TestCase):
         self.assertEqual(1.90, self.shopping_cart.total_cost)
         self.shopping_cart.clear_cart()
         self.assertEqual(0.00, self.shopping_cart.total_cost)
+        self.shopping_cart.insert_item(ShoppingItem('bar', 0))
+        self.assertEqual(0.00, self.shopping_cart.total_cost)
 
     def test_total_item_count(self):
         self.assertEqual(2, self.shopping_cart.total_item_count)
@@ -74,6 +76,15 @@ class ShoppingCartTest(unittest.TestCase):
         self.shopping_cart.clear_cart()
         self.assertEqual({}, self.shopping_cart._items)
         self.assertEqual(0, self.shopping_cart.total_item_count)
+
+    def test__validate_item(self):
+        self.assertTrue(self.shopping_cart._validate_item(self.orange))
+        invalid_price = ShoppingItem('foo', None)
+        self.assertFalse(self.shopping_cart._validate_item(invalid_price))
+        self.assertFalse(self.shopping_cart._validate_item(str))
+        self.shopping_cart.insert_item(invalid_price)
+        self.assertEqual(0, self.shopping_cart.get_item_count('foo'))
+
 
     def _add_oranges(self):
         for i in range(5):
