@@ -77,14 +77,13 @@ class ShoppingCartTest(unittest.TestCase):
         self.assertEqual({}, self.shopping_cart._items)
         self.assertEqual(0, self.shopping_cart.total_item_count)
 
-    def test__validate_item(self):
-        self.assertTrue(self.shopping_cart._validate_item(self.orange))
+    def test_validate_item(self):
+        self.assertTrue(ShoppingCart.validate_item(self.orange))
         invalid_price = ShoppingItem('foo', None)
-        self.assertFalse(self.shopping_cart._validate_item(invalid_price))
-        self.assertFalse(self.shopping_cart._validate_item(str))
+        self.assertFalse(ShoppingCart.validate_item(invalid_price))
+        self.assertFalse(ShoppingCart.validate_item(str))
         self.shopping_cart.insert_item(invalid_price)
         self.assertEqual(0, self.shopping_cart.get_item_count('foo'))
-
 
     def _add_oranges(self):
         for i in range(5):

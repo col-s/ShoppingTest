@@ -20,4 +20,4 @@ class ShoppingItem(object):
         return self._price
 
     def __repr__(self):
-        return '{0}: {1}'.format(self._name, self._price)
+        return 'Name: {0}, Price: {1}'.format(self._name, self._price)

@@ -7,6 +7,7 @@ Items can be removed one by one or all of one type or the cart completely cleare
 The cart can provide information on the total count of a specified item, total number of items, 
 total cost and median price. The class has no support for different currencies, 
 any conversion is assumed to be done by ordering software.
+Items added to cart are checked for validity and not added if invalid and error logged.
 
 ## ShoppingItem()
 This is a base class stubbed out to represent a generic item for the purposes of testing the shopping cart.

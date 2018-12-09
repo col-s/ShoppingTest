@@ -31,7 +31,7 @@ class ShoppingCart(object):
             return 0
 
     def insert_item(self, item):
-        if not self._validate_item(item):
+        if not self.validate_item(item):
             return
         if not self._items.get(item.name, None):
             self._items[item.name] = {ITEM: item, COUNT: 1}
@@ -56,7 +56,7 @@ class ShoppingCart(object):
          """
         prices = []
         for val in self._items.values():
-            prices.extend([val[ITEM].price for i in range(val[COUNT])])
+            prices.extend([val[ITEM].price for _ in range(val[COUNT])])
         median = get_median(prices)
         if round_price and median:
             median = round(median, 2)
@@ -65,7 +65,8 @@ class ShoppingCart(object):
     def clear_cart(self):
         self._items = {}
 
-    def _validate_item(self, item):
+    @staticmethod
+    def validate_item(item):
         if not hasattr(item, NAME):
             logging.error('Missing shopping item attribute {0}.'.format(NAME))
             return False
