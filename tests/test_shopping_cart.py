@@ -42,6 +42,20 @@ class ShoppingCartTest(unittest.TestCase):
         self.assertEqual(5, self.shopping_cart.get_item_count('orange'))
         self.assertEqual(0, self.shopping_cart.get_item_count('foo'))
 
+    def test_get_item_price(self):
+        self.assertEqual(0.15, self.shopping_cart.get_item_price('apple'))
+        self.assertEqual(0.00, self.shopping_cart.get_item_price('foo'))
+        int_price = ShoppingItem('bar', 1)
+        self.shopping_cart.insert_item(int_price)
+        self.assertEqual(1.0, self.shopping_cart.get_item_price('bar'))
+        self.assertTrue(isinstance(self.shopping_cart.get_item_price('bar'), float))
+
+    def test_get_item_total_cost(self):
+        self.assertEqual(0.15, self.shopping_cart.get_item_total_cost('apple'))
+        self._add_oranges()
+        self.assertEqual(1.25, self.shopping_cart.get_item_total_cost('orange'))
+        self.assertEqual(0.00, self.shopping_cart.get_item_total_cost('foo'))
+
     def test_insert_item(self):
         self.shopping_cart.insert_item(self.orange)
         self.assertEqual(self.orange, self.shopping_cart.get_item('orange'))

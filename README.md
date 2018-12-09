@@ -8,11 +8,13 @@ The cart can provide information on the total count of a specified item, total n
 total cost and median price. The class has no support for different currencies, 
 any conversion is assumed to be done by ordering software.
 Items added to cart are checked for validity and not added if invalid and error logged.
+Prices are returned as floats rounded to 2 decimal places as floats.
 
 ## ShoppingItem()
 This is a base class stubbed out to represent a generic item for the purposes of testing the shopping cart.
 It is assumed any items passed to the shopping cart class would have a fully implemented sub-class and 
-include the price and name members.
+include the price and name properties.
+Prints out name and price as float to 2 decimal places.
 
 ## Utilities
 This module contains some helper functions

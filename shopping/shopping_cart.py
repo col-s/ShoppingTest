@@ -22,6 +22,7 @@ class ShoppingCart(object):
 
     def get_item(self, item_name):
         if self._items.get(item_name, None):
+            print(self._items[item_name][ITEM])
             return self._items[item_name][ITEM]
 
     def get_item_count(self, item_name):
@@ -29,6 +30,18 @@ class ShoppingCart(object):
             return self._items[item_name][COUNT]
         else:
             return 0
+
+    def get_item_price(self, item_name):
+        if self._items.get(item_name, None):
+            return round(self._items[item_name][ITEM].price, 2)
+        else:
+            return 0.00
+
+    def get_item_total_cost(self, item_name):
+        if self._items.get(item_name, None):
+            return round(self._items[item_name][ITEM].price * self._items[item_name][COUNT], 2)
+        else:
+            return 0.00
 
     def insert_item(self, item):
         if not self.validate_item(item):
