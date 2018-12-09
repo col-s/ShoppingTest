@@ -4,7 +4,7 @@ from shopping.shopping_item import ShoppingItem
 
 
 class ShoppingCartTest(unittest.TestCase):
-    """Unit tests for Shopping cart"""
+    """Unit tests for Shopping Cart"""
 
     def setUp(self):
         self.shopping_cart = ShoppingCart()
