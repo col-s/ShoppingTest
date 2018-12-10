@@ -8,7 +8,7 @@ def get_median(numbers):
     if count == 0:
         return None
     else:
-        # preform the sort on a copy of the list so as not to alter original list
+        # perform the sort on a copy of the list so as not to alter original list
         sorted_numbers = sort_numbers(numbers, copy=True)
         if count % 2:
             return sorted_numbers[count//2]
@@ -19,7 +19,7 @@ def get_median(numbers):
 def sort_numbers(numbers, copy=False):
     """
     quicksort implementation for sorting list of numbers if
-    pythons sorted() or list.sort() methods are not used
+    builtin sorted() or list.sort() methods are not used
     :arg numbers: list of ints or floats
     :arg copy: bool to determine list whether a copy of the list is returned
         or it is mutated in place, and None is returned

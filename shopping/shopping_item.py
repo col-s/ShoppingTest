@@ -1,7 +1,8 @@
 class ShoppingItem(object):
     """
     Class to be a generic representation of items of shopping
-    Specific items could be sub-classed from this
+    Specific items would be sub-classed based on this
+    NOTE: Class created to use solely in testing of ShoppingCart
     :arg name: string of the item name, used to identify the item
     :arg price: int or float of the price of the item,
                 currency is not specified

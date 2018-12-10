@@ -13,7 +13,7 @@ class ShoppingCart(object):
 
     @property
     def total_cost(self):
-        """total price of all items in the cart, returned to 2 decimal places as its a price"""
+        """total price of all items in the cart, rounded to 2 decimal places"""
         return round(sum([val[ITEM].price * val[COUNT] for val in self._items.values()]), 2)
 
     @property
@@ -35,15 +35,18 @@ class ShoppingCart(object):
         if self._items.get(item_name, None):
             return round(self._items[item_name][ITEM].price, 2)
         else:
-            return 0.00
+            return 0.0
 
     def get_item_total_cost(self, item_name):
         if self._items.get(item_name, None):
             return round(self._items[item_name][ITEM].price * self._items[item_name][COUNT], 2)
         else:
-            return 0.00
+            return 0.0
 
     def insert_item(self, item):
+        """
+        :arg item: ShoppingItem object
+        """
         if not self.validate_item(item):
             return
         if not self._items.get(item.name, None):
@@ -92,11 +95,11 @@ class ShoppingCart(object):
         return True
 
     def __str__(self):
-        prepend = 'ShoppingCart:'
+        prefix = 'ShoppingCart:'
         if self._items:
             items = ['{} x{}'.format(self._items[key][ITEM].name,
                                      self._items[key][COUNT]) for key in self._items.keys()]
             items.sort()
-            return '{} {}'.format(prepend, ', '.join(items))
+            return '{} {}'.format(prefix, ', '.join(items))
         else:
-            return '{} empty'.format(prepend)
+            return '{} empty'.format(prefix)

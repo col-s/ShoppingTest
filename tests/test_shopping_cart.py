@@ -44,7 +44,7 @@ class ShoppingCartTest(unittest.TestCase):
 
     def test_get_item_price(self):
         self.assertEqual(0.15, self.shopping_cart.get_item_price('apple'))
-        self.assertEqual(0.00, self.shopping_cart.get_item_price('foo'))
+        self.assertEqual(0.0, self.shopping_cart.get_item_price('foo'))
         int_price = ShoppingItem('bar', 1)
         self.shopping_cart.insert_item(int_price)
         self.assertEqual(1.0, self.shopping_cart.get_item_price('bar'))
@@ -54,7 +54,7 @@ class ShoppingCartTest(unittest.TestCase):
         self.assertEqual(0.15, self.shopping_cart.get_item_total_cost('apple'))
         self._add_oranges()
         self.assertEqual(1.25, self.shopping_cart.get_item_total_cost('orange'))
-        self.assertEqual(0.00, self.shopping_cart.get_item_total_cost('foo'))
+        self.assertEqual(0.0, self.shopping_cart.get_item_total_cost('foo'))
 
     def test_insert_item(self):
         self.shopping_cart.insert_item(self.orange)
