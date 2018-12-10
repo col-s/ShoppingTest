@@ -19,5 +19,8 @@ class ShoppingItem(object):
     def price(self):
         return self._price
 
+    def __str__(self):
+        return '{}, price={:.2f}'.format(self._name, self._price)
+
     def __repr__(self):
-        return 'Name: {}, Price: {:.2f}'.format(self._name, self._price)
+        return 'ShoppingItem({}, {})'.format(self._name, self._price)

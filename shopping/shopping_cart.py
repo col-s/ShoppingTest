@@ -91,3 +91,12 @@ class ShoppingCart(object):
             return False
         return True
 
+    def __str__(self):
+        prepend = 'ShoppingCart:'
+        if self._items:
+            items = ['{} x{}'.format(self._items[key][ITEM].name,
+                                     self._items[key][COUNT]) for key in self._items.keys()]
+            items.sort()
+            return '{} {}'.format(prepend, ', '.join(items))
+        else:
+            return '{} empty'.format(prepend)
